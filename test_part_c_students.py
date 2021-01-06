@@ -33,6 +33,7 @@ if __name__ == '__main__':
         return False
 
 
+    # bench_data_path = os.path.join('data', 'test.snappy.parquet')
     bench_data_path = os.path.join('data', 'benchmark_data_train.snappy.parquet')
     bench_lbls_path = os.path.join('data', 'benchmark_lbls_train.csv')
     queries_path = os.path.join('data', 'queries_train.tsv')

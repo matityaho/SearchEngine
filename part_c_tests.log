@@ -1,5 +1,20 @@
-ERROR 2020-12-31 20:57:52,154: report_part_c.docx does not exist.
-ERROR 2020-12-31 20:57:52,170: search_engine_1.py does not exist.
-ERROR 2020-12-31 20:57:52,170: search_engine_2.py does not exist.
-ERROR 2020-12-31 20:58:02,395: idx_bench.pkl does not exist.
-DEBUG 2020-12-31 20:58:02,395: Total runtime was: 0:00:10.241432
+ERROR 2021-01-06 19:19:36,179: report_part_c.docx does not exist.
+INFO 2021-01-06 19:19:36,210: Successfully loaded benchmark labels data.
+INFO 2021-01-06 19:19:36,215: Successfully loaded queries data.
+ERROR 2021-01-06 19:19:36,216: search_engine_1.py does not exist.
+ERROR 2021-01-06 19:19:36,216: search_engine_2.py does not exist.
+INFO 2021-01-06 19:19:37,959: Successfully imported module search_engine_best.
+DEBUG 2021-01-06 19:19:40,970: Building the index in search_engine_best for benchmark data took 2.9980889000000004 seconds.
+ERROR 2021-01-06 19:19:41,086: The following error occured while testing the module search_engine_best.
+ERROR 2021-01-06 19:19:41,086: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "C:/Users/May/PycharmProjects/Search_Engine/test_part_c_students.py", line 108, in <module>
+    n_res, res = engine.search('bioweapon')
+  File "C:\Users\May\PycharmProjects\Search_Engine\search_engine_best.py", line 80, in search
+    return searcher.search(query)
+  File "C:\Users\May\PycharmProjects\Search_Engine\searcher.py", line 34, in search
+    relevant_docs = self._relevant_docs_from_posting(query_as_list)
+  File "C:\Users\May\PycharmProjects\Search_Engine\searcher.py", line 50, in _relevant_docs_from_posting
+    for doc_id, tf in posting_list:
+ValueError: too many values to unpack (expected 2)
+DEBUG 2021-01-06 19:19:41,094: Total runtime was: 0:00:04.915023

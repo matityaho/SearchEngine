@@ -38,6 +38,8 @@ class SearchEngine:
             number_of_documents += 1
             # index the document data
             self._indexer.add_new_doc(parsed_document)
+        self._indexer.after_indexing()
+        self._indexer.save_index("inverted_idx")
         print('Finished parsing and indexing.')
 
     # DO NOT MODIFY THIS SIGNATURE
@@ -73,5 +75,6 @@ class SearchEngine:
             a list of tweet_ids where the first element is the most relavant 
             and the last is the least relevant result.
         """
+        self.load_index("inverted_idx")
         searcher = Searcher(self._parser, self._indexer, model=self._model)
         return searcher.search(query)
