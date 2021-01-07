@@ -46,6 +46,7 @@ def load_list(name):
     with open(name + '.pkl', 'rb') as f:
         listObj.append(pickle.load(f))
         listObj.append(pickle.load(f))
+        listObj.append(pickle.load(f))
     return listObj
 
 __fid_ptrn = re.compile(

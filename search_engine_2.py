@@ -2,10 +2,11 @@ import pandas as pd
 from reader import ReadFile
 from configuration import ConfigClass
 from parser_module import Parse
-from indexer import Indexer
+from indexer2 import Indexer
 from searcher2 import Searcher
 import utils
 import gensim
+import numpy as np
 
 
 
@@ -67,9 +68,8 @@ class SearchEngine:
         This is where you would load models like word2vec, LSI, LDA, etc. and 
         assign to self._model, which is passed on to the searcher at query time.
         """
-        if self._model is None:
-            w2c_path = self._config.google_news_vectors_negative300_path
-            self._model = gensim.models.KeyedVectors.load_word2vec_format(w2c_path)
+        w2c_path = self._config.google_news_vectors_negative300_path
+        self._model = gensim.models.KeyedVectors.load_word2vec_format(w2c_path, binary=True, datatype=np.float16)
 
     # DO NOT MODIFY THIS SIGNATURE
     # You can change the internal implementation as you see fit.

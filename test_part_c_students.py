@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
         # test for each search engine module
         # engine_modules = ['search_engine_' + name for name in ['1', '2', 'best']]
-        engine_modules = ['search_engine_' + name for name in ['2']]
+        engine_modules = ['search_engine_' + name for name in ['1']]
         for engine_module in engine_modules:
             try:
                 # does the module file exist?
@@ -126,6 +126,7 @@ if __name__ == '__main__':
                         q_n_res, q_res = engine.search(q_keywords)
                         end_time = time.time()
                         q_time = end_time - start_time
+                        # print(q_time)
                         if q_n_res is None or q_res is None or q_n_res < 1 or len(q_res) < 1:
                             logging.error(f"Query {q_id} with keywords '{q_keywords}' returned no results.")
                         else:

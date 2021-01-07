@@ -34,7 +34,7 @@ class Indexer:
         terms = document_dictionary.copy().keys()
         size_terms = len(terms)
         # Save doc data, format: {tweet id: (words dictionary(word: amount), max_tf, size_terms)
-        self.documents[document.tweet_id] = (document_dictionary, max_tf, size_terms)
+        self.documents[document.tweet_id] = (self.get_words(document_dictionary), max_tf, size_terms)
 
         # Go over each term in the doc
         for term in terms:
@@ -123,4 +123,12 @@ class Indexer:
         """
         return self.postingDict[term] if self._is_term_exist(term) else []
 
-
+    def get_words(self, dict):
+        words = []
+        for term, amount in dict.items():
+            if amount > 1:
+                for i in range(amount):
+                    words.append(term)
+            else:
+                words.append(term)
+        return words

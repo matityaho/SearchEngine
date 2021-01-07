@@ -1,24 +1,48 @@
-ERROR 2021-01-07 13:37:21,988: report_part_c.docx does not exist.
-INFO 2021-01-07 13:37:22,033: Successfully loaded benchmark labels data.
-INFO 2021-01-07 13:37:22,048: Successfully loaded queries data.
-INFO 2021-01-07 13:37:25,105: Successfully imported module search_engine_2.
-DEBUG 2021-01-07 13:37:36,579: Building the index in search_engine_2 for benchmark data took 11.4383367 seconds.
-INFO 2021-01-07 13:37:36,579: loading projection weights from GoogleNews-vectors-negative300.bin
-DEBUG 2021-01-07 13:37:36,587: {'uri': 'GoogleNews-vectors-negative300.bin', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'ignore_ext': False, 'transport_params': None}
-ERROR 2021-01-07 13:37:36,628: The following error occured while testing the module search_engine_2.
-ERROR 2021-01-07 13:37:36,629: 'utf-8' codec can't decode byte 0x94 in position 7: invalid start byte
-Traceback (most recent call last):
-  File "C:/Users/May/PycharmProjects/Search_Engine/test_part_c_students.py", line 106, in <module>
-    engine.load_precomputed_model(model_dir)
-  File "C:\Users\May\PycharmProjects\Search_Engine\search_engine_2.py", line 72, in load_precomputed_model
-    self._model = gensim.models.KeyedVectors.load_word2vec_format(w2c_path)
-  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\models\keyedvectors.py", line 1549, in load_word2vec_format
-    limit=limit, datatype=datatype)
-  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\models\utils_any2vec.py", line 288, in _load_word2vec_format
-    _word2vec_read_text(fin, result, counts, vocab_size, vector_size, datatype, unicode_errors, encoding)
-  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\models\utils_any2vec.py", line 218, in _word2vec_read_text
-    parts = utils.to_unicode(line.rstrip(), encoding=encoding, errors=unicode_errors).split(" ")
-  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\utils.py", line 368, in any2unicode
-    return unicode(text, encoding, errors=errors)
-UnicodeDecodeError: 'utf-8' codec can't decode byte 0x94 in position 7: invalid start byte
-DEBUG 2021-01-07 13:37:36,722: Total runtime was: 0:00:14.734867
+ERROR 2021-01-07 19:13:48,983: report_part_c.docx does not exist.
+INFO 2021-01-07 19:13:48,997: Successfully loaded benchmark labels data.
+INFO 2021-01-07 19:13:49,000: Successfully loaded queries data.
+INFO 2021-01-07 19:13:49,924: Successfully imported module search_engine_1.
+DEBUG 2021-01-07 19:13:51,840: Building the index in search_engine_1 for benchmark data took 1.8997270999999998 seconds.
+DEBUG 2021-01-07 19:13:52,475: search_engine_1 successfully returned 8726 results for the query 'bioweapon'.
+DEBUG 2021-01-07 19:13:54,117: search_engine_1 successfully returned 8726 results for query number 1.
+DEBUG 2021-01-07 19:13:54,648: search_engine_1 successfully returned 8726 results for query number 2.
+DEBUG 2021-01-07 19:13:55,617: search_engine_1 successfully returned 8726 results for query number 3.
+DEBUG 2021-01-07 19:13:56,272: search_engine_1 successfully returned 8726 results for query number 4.
+DEBUG 2021-01-07 19:13:56,801: search_engine_1 successfully returned 8726 results for query number 5.
+DEBUG 2021-01-07 19:13:57,357: search_engine_1 successfully returned 8726 results for query number 6.
+DEBUG 2021-01-07 19:13:57,915: search_engine_1 successfully returned 8726 results for query number 7.
+DEBUG 2021-01-07 19:13:58,857: search_engine_1 successfully returned 8726 results for query number 8.
+DEBUG 2021-01-07 19:13:59,448: search_engine_1 successfully returned 8726 results for query number 9.
+DEBUG 2021-01-07 19:14:00,844: search_engine_1 successfully returned 8726 results for query number 10.
+DEBUG 2021-01-07 19:14:01,400: search_engine_1 successfully returned 8726 results for query number 11.
+DEBUG 2021-01-07 19:14:02,125: search_engine_1 successfully returned 8726 results for query number 12.
+DEBUG 2021-01-07 19:14:02,789: search_engine_1 successfully returned 8726 results for query number 13.
+DEBUG 2021-01-07 19:14:04,119: search_engine_1 successfully returned 8726 results for query number 14.
+DEBUG 2021-01-07 19:14:04,761: search_engine_1 successfully returned 8726 results for query number 15.
+DEBUG 2021-01-07 19:14:05,554: search_engine_1 successfully returned 8726 results for query number 16.
+DEBUG 2021-01-07 19:14:06,271: search_engine_1 successfully returned 8726 results for query number 17.
+DEBUG 2021-01-07 19:14:06,905: search_engine_1 successfully returned 8726 results for query number 18.
+DEBUG 2021-01-07 19:14:07,554: search_engine_1 successfully returned 8726 results for query number 19.
+DEBUG 2021-01-07 19:14:08,164: search_engine_1 successfully returned 8726 results for query number 20.
+DEBUG 2021-01-07 19:14:09,299: search_engine_1 successfully returned 8726 results for query number 21.
+DEBUG 2021-01-07 19:14:09,913: search_engine_1 successfully returned 8726 results for query number 22.
+DEBUG 2021-01-07 19:14:10,487: search_engine_1 successfully returned 8726 results for query number 23.
+DEBUG 2021-01-07 19:14:11,478: search_engine_1 successfully returned 8726 results for query number 24.
+DEBUG 2021-01-07 19:14:12,033: search_engine_1 successfully returned 8726 results for query number 25.
+DEBUG 2021-01-07 19:14:12,605: search_engine_1 successfully returned 8726 results for query number 26.
+DEBUG 2021-01-07 19:14:13,180: search_engine_1 successfully returned 8726 results for query number 27.
+DEBUG 2021-01-07 19:14:13,702: search_engine_1 successfully returned 8726 results for query number 28.
+DEBUG 2021-01-07 19:14:14,897: search_engine_1 successfully returned 8726 results for query number 29.
+DEBUG 2021-01-07 19:14:15,502: search_engine_1 successfully returned 8726 results for query number 30.
+DEBUG 2021-01-07 19:14:17,188: search_engine_1 successfully returned 8726 results for query number 31.
+DEBUG 2021-01-07 19:14:17,755: search_engine_1 successfully returned 8726 results for query number 32.
+DEBUG 2021-01-07 19:14:18,271: search_engine_1 successfully returned 8726 results for query number 33.
+DEBUG 2021-01-07 19:14:18,860: search_engine_1 successfully returned 8726 results for query number 34.
+DEBUG 2021-01-07 19:14:19,413: search_engine_1 successfully returned 8726 results for query number 35.
+DEBUG 2021-01-07 19:14:26,572: search_engine_1 results have MAP value of 0.5719666746344997.
+DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision of 0.5644905984012685.
+DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision@5 of 0.5885714285714287.
+DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision@10 of 0.5371428571428571.
+DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision@50 of 0.5520000000000002.
+DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average recall of 1.0.
+DEBUG 2021-01-07 19:14:26,601: Total runtime was: 0:00:37.617951
