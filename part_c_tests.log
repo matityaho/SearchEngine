@@ -1,20 +1,24 @@
-ERROR 2021-01-06 19:19:36,179: report_part_c.docx does not exist.
-INFO 2021-01-06 19:19:36,210: Successfully loaded benchmark labels data.
-INFO 2021-01-06 19:19:36,215: Successfully loaded queries data.
-ERROR 2021-01-06 19:19:36,216: search_engine_1.py does not exist.
-ERROR 2021-01-06 19:19:36,216: search_engine_2.py does not exist.
-INFO 2021-01-06 19:19:37,959: Successfully imported module search_engine_best.
-DEBUG 2021-01-06 19:19:40,970: Building the index in search_engine_best for benchmark data took 2.9980889000000004 seconds.
-ERROR 2021-01-06 19:19:41,086: The following error occured while testing the module search_engine_best.
-ERROR 2021-01-06 19:19:41,086: too many values to unpack (expected 2)
+ERROR 2021-01-07 13:37:21,988: report_part_c.docx does not exist.
+INFO 2021-01-07 13:37:22,033: Successfully loaded benchmark labels data.
+INFO 2021-01-07 13:37:22,048: Successfully loaded queries data.
+INFO 2021-01-07 13:37:25,105: Successfully imported module search_engine_2.
+DEBUG 2021-01-07 13:37:36,579: Building the index in search_engine_2 for benchmark data took 11.4383367 seconds.
+INFO 2021-01-07 13:37:36,579: loading projection weights from GoogleNews-vectors-negative300.bin
+DEBUG 2021-01-07 13:37:36,587: {'uri': 'GoogleNews-vectors-negative300.bin', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'ignore_ext': False, 'transport_params': None}
+ERROR 2021-01-07 13:37:36,628: The following error occured while testing the module search_engine_2.
+ERROR 2021-01-07 13:37:36,629: 'utf-8' codec can't decode byte 0x94 in position 7: invalid start byte
 Traceback (most recent call last):
-  File "C:/Users/May/PycharmProjects/Search_Engine/test_part_c_students.py", line 108, in <module>
-    n_res, res = engine.search('bioweapon')
-  File "C:\Users\May\PycharmProjects\Search_Engine\search_engine_best.py", line 80, in search
-    return searcher.search(query)
-  File "C:\Users\May\PycharmProjects\Search_Engine\searcher.py", line 34, in search
-    relevant_docs = self._relevant_docs_from_posting(query_as_list)
-  File "C:\Users\May\PycharmProjects\Search_Engine\searcher.py", line 50, in _relevant_docs_from_posting
-    for doc_id, tf in posting_list:
-ValueError: too many values to unpack (expected 2)
-DEBUG 2021-01-06 19:19:41,094: Total runtime was: 0:00:04.915023
+  File "C:/Users/May/PycharmProjects/Search_Engine/test_part_c_students.py", line 106, in <module>
+    engine.load_precomputed_model(model_dir)
+  File "C:\Users\May\PycharmProjects\Search_Engine\search_engine_2.py", line 72, in load_precomputed_model
+    self._model = gensim.models.KeyedVectors.load_word2vec_format(w2c_path)
+  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\models\keyedvectors.py", line 1549, in load_word2vec_format
+    limit=limit, datatype=datatype)
+  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\models\utils_any2vec.py", line 288, in _load_word2vec_format
+    _word2vec_read_text(fin, result, counts, vocab_size, vector_size, datatype, unicode_errors, encoding)
+  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\models\utils_any2vec.py", line 218, in _word2vec_read_text
+    parts = utils.to_unicode(line.rstrip(), encoding=encoding, errors=unicode_errors).split(" ")
+  File "C:\Users\May\Desktop\לימודים\אחזור מידע\פרויקט מנוע\Search_Engine\venv\lib\site-packages\gensim\utils.py", line 368, in any2unicode
+    return unicode(text, encoding, errors=errors)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x94 in position 7: invalid start byte
+DEBUG 2021-01-07 13:37:36,722: Total runtime was: 0:00:14.734867
