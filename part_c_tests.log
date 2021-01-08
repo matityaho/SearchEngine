@@ -1,48 +1,8 @@
-ERROR 2021-01-07 19:13:48,983: report_part_c.docx does not exist.
-INFO 2021-01-07 19:13:48,997: Successfully loaded benchmark labels data.
-INFO 2021-01-07 19:13:49,000: Successfully loaded queries data.
-INFO 2021-01-07 19:13:49,924: Successfully imported module search_engine_1.
-DEBUG 2021-01-07 19:13:51,840: Building the index in search_engine_1 for benchmark data took 1.8997270999999998 seconds.
-DEBUG 2021-01-07 19:13:52,475: search_engine_1 successfully returned 8726 results for the query 'bioweapon'.
-DEBUG 2021-01-07 19:13:54,117: search_engine_1 successfully returned 8726 results for query number 1.
-DEBUG 2021-01-07 19:13:54,648: search_engine_1 successfully returned 8726 results for query number 2.
-DEBUG 2021-01-07 19:13:55,617: search_engine_1 successfully returned 8726 results for query number 3.
-DEBUG 2021-01-07 19:13:56,272: search_engine_1 successfully returned 8726 results for query number 4.
-DEBUG 2021-01-07 19:13:56,801: search_engine_1 successfully returned 8726 results for query number 5.
-DEBUG 2021-01-07 19:13:57,357: search_engine_1 successfully returned 8726 results for query number 6.
-DEBUG 2021-01-07 19:13:57,915: search_engine_1 successfully returned 8726 results for query number 7.
-DEBUG 2021-01-07 19:13:58,857: search_engine_1 successfully returned 8726 results for query number 8.
-DEBUG 2021-01-07 19:13:59,448: search_engine_1 successfully returned 8726 results for query number 9.
-DEBUG 2021-01-07 19:14:00,844: search_engine_1 successfully returned 8726 results for query number 10.
-DEBUG 2021-01-07 19:14:01,400: search_engine_1 successfully returned 8726 results for query number 11.
-DEBUG 2021-01-07 19:14:02,125: search_engine_1 successfully returned 8726 results for query number 12.
-DEBUG 2021-01-07 19:14:02,789: search_engine_1 successfully returned 8726 results for query number 13.
-DEBUG 2021-01-07 19:14:04,119: search_engine_1 successfully returned 8726 results for query number 14.
-DEBUG 2021-01-07 19:14:04,761: search_engine_1 successfully returned 8726 results for query number 15.
-DEBUG 2021-01-07 19:14:05,554: search_engine_1 successfully returned 8726 results for query number 16.
-DEBUG 2021-01-07 19:14:06,271: search_engine_1 successfully returned 8726 results for query number 17.
-DEBUG 2021-01-07 19:14:06,905: search_engine_1 successfully returned 8726 results for query number 18.
-DEBUG 2021-01-07 19:14:07,554: search_engine_1 successfully returned 8726 results for query number 19.
-DEBUG 2021-01-07 19:14:08,164: search_engine_1 successfully returned 8726 results for query number 20.
-DEBUG 2021-01-07 19:14:09,299: search_engine_1 successfully returned 8726 results for query number 21.
-DEBUG 2021-01-07 19:14:09,913: search_engine_1 successfully returned 8726 results for query number 22.
-DEBUG 2021-01-07 19:14:10,487: search_engine_1 successfully returned 8726 results for query number 23.
-DEBUG 2021-01-07 19:14:11,478: search_engine_1 successfully returned 8726 results for query number 24.
-DEBUG 2021-01-07 19:14:12,033: search_engine_1 successfully returned 8726 results for query number 25.
-DEBUG 2021-01-07 19:14:12,605: search_engine_1 successfully returned 8726 results for query number 26.
-DEBUG 2021-01-07 19:14:13,180: search_engine_1 successfully returned 8726 results for query number 27.
-DEBUG 2021-01-07 19:14:13,702: search_engine_1 successfully returned 8726 results for query number 28.
-DEBUG 2021-01-07 19:14:14,897: search_engine_1 successfully returned 8726 results for query number 29.
-DEBUG 2021-01-07 19:14:15,502: search_engine_1 successfully returned 8726 results for query number 30.
-DEBUG 2021-01-07 19:14:17,188: search_engine_1 successfully returned 8726 results for query number 31.
-DEBUG 2021-01-07 19:14:17,755: search_engine_1 successfully returned 8726 results for query number 32.
-DEBUG 2021-01-07 19:14:18,271: search_engine_1 successfully returned 8726 results for query number 33.
-DEBUG 2021-01-07 19:14:18,860: search_engine_1 successfully returned 8726 results for query number 34.
-DEBUG 2021-01-07 19:14:19,413: search_engine_1 successfully returned 8726 results for query number 35.
-DEBUG 2021-01-07 19:14:26,572: search_engine_1 results have MAP value of 0.5719666746344997.
-DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision of 0.5644905984012685.
-DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision@5 of 0.5885714285714287.
-DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision@10 of 0.5371428571428571.
-DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average precision@50 of 0.5520000000000002.
-DEBUG 2021-01-07 19:14:26,601: search_engine_1 results produced average recall of 1.0.
-DEBUG 2021-01-07 19:14:26,601: Total runtime was: 0:00:37.617951
+ERROR 2021-01-08 15:54:08,947: report_part_c.docx does not exist.
+INFO 2021-01-08 15:54:08,969: Successfully loaded benchmark labels data.
+INFO 2021-01-08 15:54:08,972: Successfully loaded queries data.
+INFO 2021-01-08 15:54:11,019: Successfully imported module search_engine_4.
+DEBUG 2021-01-08 15:54:14,711: Building the index in search_engine_4 for benchmark data took 3.6705708999999995 seconds.
+DEBUG 2021-01-08 15:54:17,468: search_engine_4 successfully returned 36 results for the query 'bioweapon'.
+DEBUG 2021-01-08 15:54:26,695: search_engine_4 successfully returned 1061 results for query number 1.
+DEBUG 2021-01-08 15:54:34,139: search_engine_4 successfully returned 3856 results for query number 2.

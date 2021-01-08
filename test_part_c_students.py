@@ -82,8 +82,8 @@ if __name__ == '__main__':
                 logging.error('model.zip file does not exists.')
 
         # test for each search engine module
-        # engine_modules = ['search_engine_' + name for name in ['1', '2', 'best']]
-        engine_modules = ['search_engine_' + name for name in ['1']]
+        # engine_modules = ['search_engine_' + name for name in ['1', '2', '3', 'best']]
+        engine_modules = ['search_engine_' + name for name in ['4']]
         for engine_module in engine_modules:
             try:
                 # does the module file exist?
@@ -122,6 +122,7 @@ if __name__ == '__main__':
                     for i, row in queries.iterrows():
                         q_id = row['query_id']
                         q_keywords = row['keywords']
+                        # q_keywords = row['information_need']
                         start_time = time.time()
                         q_n_res, q_res = engine.search(q_keywords)
                         end_time = time.time()

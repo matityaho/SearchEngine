@@ -1,9 +1,7 @@
 from ranker import Ranker
-# import nltk
-# nltk.download('wordnet')
-from nltk.corpus import wordnet
 import numpy as np
 import math
+from spellchecker import SpellChecker
 
 # DO NOT MODIFY CLASS NAME
 class Searcher:
@@ -34,17 +32,23 @@ class Searcher:
         """
         query_as_dict = self._parser.parse_query(query)
 
-        # wordnet
-        for word in query_as_dict.copy().keys():
-            syn = []
-            # if word not in self._indexer.inverted_idx:
-            for synset in wordnet.synsets(word):
-                for lemma in synset.lemmas():
-                    syn.append(lemma.name().replace('_', ' '))  # add the synonyms
-            for s in syn:
-                if s not in query_as_dict and s in self._indexer.inverted_idx:
-                    query_as_dict[s] = 1
-                    break
+        # spell checker
+        query_as_list = query_as_dict.copy().keys()
+        spell = SpellChecker()
+        # misspeled = spell.unknown(query_as_list)
+        # for word in misspeled:
+        for word in query_as_list:
+            if ' ' not in word:
+                # correct_word = spell.correction(word)
+                correct_words = spell.candidates(word)
+                correct_word = ''
+                for c_word in correct_words:
+                    if c_word != word and c_word in self._indexer.inverted_idx:
+                        correct_word = c_word
+                        break
+                if len(correct_word) == 0:
+                    continue
+                query_as_dict[correct_word] = 1
 
 
         relevant_docs = self._relevant_docs_from_posting(query_as_dict)

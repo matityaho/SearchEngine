@@ -59,6 +59,18 @@ class Searcher:
         """
         que_vector = self.get_vector(query_as_list)
         relevant_docs = {}
+        # for term in query_as_list:
+        #     posting_list = self._indexer.get_term_posting_list(term)
+        #     for doc_id, amount, tf in posting_list:
+        #         df = relevant_docs.get(doc_id, 0)
+        #         relevant_docs[doc_id] = df + 1
+        # docs = self._indexer.documents
+        # for doc_id, doc_tuple in docs.items():
+        #     if doc_id in relevant_docs:
+        #         words = doc_tuple[0]
+        #         doc_vector = self.get_vector(words)
+        #         sim = self.cosine_similarity(doc_vector, que_vector)
+        #         relevant_docs[doc_id] = sim + relevant_docs[doc_id]
         docs = self._indexer.documents
         for doc_id, doc_tuple in docs.items():
             words = doc_tuple[0]
@@ -66,11 +78,6 @@ class Searcher:
             sim = self.cosine_similarity(doc_vector, que_vector)
             relevant_docs[doc_id] = sim
 
-        # for term in query_as_list:
-        #     posting_list = self._indexer.get_term_posting_list(term)
-        #     for doc_id, tf in posting_list:
-        #         df = relevant_docs.get(doc_id, 0)
-        #         relevant_docs[doc_id] = df + 1
         return relevant_docs
 
     def get_vector(self, tokens):

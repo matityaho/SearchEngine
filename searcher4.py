@@ -1,9 +1,10 @@
 from ranker import Ranker
-# import nltk
-# nltk.download('wordnet')
+import utils
 from nltk.corpus import wordnet
 import numpy as np
 import math
+from py_thesaurus import Thesaurus
+
 
 # DO NOT MODIFY CLASS NAME
 class Searcher:
@@ -36,15 +37,17 @@ class Searcher:
 
         # wordnet
         for word in query_as_dict.copy().keys():
-            syn = []
-            # if word not in self._indexer.inverted_idx:
-            for synset in wordnet.synsets(word):
-                for lemma in synset.lemmas():
-                    syn.append(lemma.name().replace('_', ' '))  # add the synonyms
-            for s in syn:
-                if s not in query_as_dict and s in self._indexer.inverted_idx:
-                    query_as_dict[s] = 1
-                    break
+            thes = Thesaurus(word)
+            print(thes.get_synonym())
+            # syn = []
+            # # if word not in self._indexer.inverted_idx:
+            # for synset in wordnet.synsets(word):
+            #     for lemma in synset.lemmas():
+            #         syn.append(lemma.name().replace('_', ' '))  # add the synonyms
+            # for s in syn:
+            #     if s not in query_as_dict and s in self._indexer.inverted_idx:
+            #         query_as_dict[s] = 1
+            #         break
 
 
         relevant_docs = self._relevant_docs_from_posting(query_as_dict)
