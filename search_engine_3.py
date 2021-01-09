@@ -6,7 +6,7 @@ from indexer import Indexer
 from searcher3 import Searcher
 import utils
 
-# wordnet
+# spell checker
 
 # DO NOT CHANGE THE CLASS NAME
 class SearchEngine:

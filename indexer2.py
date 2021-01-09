@@ -79,7 +79,8 @@ class Indexer:
         del self.entityDict
 
 
-        # print(SortedDict(self.inverted_idx))
+        # sort = SortedDict(self.inverted_idx)
+        # print()
         # print(SortedDict(self.postingDict))
         # print(len(self.inverted_idx.keys()))
         # print(len(self.postingDict.keys()))

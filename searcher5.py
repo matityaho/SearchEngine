@@ -1,13 +1,9 @@
 from ranker import Ranker
-import utils
+# import nltk
+# nltk.download('wordnet')
 from nltk.corpus import wordnet
 import numpy as np
 import math
-# import nltk
-# nltk.download('lin_thesaurus')
-from nltk.corpus import lin_thesaurus as thes
-
-# thesaurus
 
 # DO NOT MODIFY CLASS NAME
 class Searcher:
@@ -37,16 +33,6 @@ class Searcher:
             and the last is the least relevant result.
         """
         query_as_dict = self._parser.parse_query(query)
-
-        # thesaurus
-        for word in query_as_dict.copy().keys():
-            if len(thes.synonyms(word)[1][1]):
-                syn = list(thes.synonyms(word)[1][1])[:30]
-                for s in syn:
-                    if s not in query_as_dict and s in self._indexer.inverted_idx:
-                        query_as_dict[s] = 1
-                        break
-
         relevant_docs = self._relevant_docs_from_posting(query_as_dict)
 
         ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)

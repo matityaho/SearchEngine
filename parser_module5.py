@@ -19,6 +19,7 @@ class Parse:
         self.stop_words = stopwords.words('english')
         self.stop_words.extend([':', '\'s', '.', ',', ';', '’', '?', '!', 'rt', '-', '|', '~', '(', ')', '*', '+', '='
                                 '/', '"', '``', '\'\'', '\n', '\n\n', '&', 'amp', '…', '\'', '`', '[', ']', '{', '}'])
+        self.covid_words = ['corona', 'coronavirus', 'covid', 'covid19', 'cvd', 'covidvirus', 'covidviruses', 'cov', 'cov19', 'covids', 'cv19', 'coronavi', 'coronavir', 'coronaviruses', 'coronovirus']
 
     def find_url(self, text):
         """
@@ -39,17 +40,12 @@ class Parse:
         url_tokens = []
         tokens_ans = []
         for url in urls:
-            if 't.co' not in url:
-                url_tokens.extend(re.split(r';|-|/|//|:|=|\?', url))
+            url_tokens.extend(re.split(r';|-|/|//|:|=|\?', url))
 
         for token in url_tokens:
-            if token == 'https' or token == 'http' or token == '':
-                continue
-            elif 'www.' in token:
+            if 'www.' in token:
                 tokens_ans.append(token.replace('www.', ''))
-            # remove garbage (like aH3cdR5ouY)
-            elif token.islower() or token.isdigit():
-                tokens_ans.append(token)
+
         return tokens_ans
 
     def number_3digits(self, number):
@@ -154,6 +150,15 @@ class Parse:
             if (w.lower() in self.stop_words) or (w in self.stop_words):
                 del text_tokens[i]
                 continue
+            elif w.lower() in self.covid_words:
+                if i < (len(text_tokens) - 1) and (text_tokens[i+1] == '19'):
+                    del text_tokens[i+1]
+                elif (i < (len(text_tokens) - 1) and ((text_tokens[i+1] == '-') or (text_tokens[i+1] == '_'))) and (i < (len(text_tokens) - 2) and (text_tokens[i+2] == '19')):
+                    del text_tokens[i+1]
+                    del text_tokens[i+1]
+                text_tokens[i] = 'covid'
+                i += 1
+                continue
             else:
                 # Find parser rules
                 # (Upper case) - if first letter is capital -> all word is uppercase
@@ -162,6 +167,8 @@ class Parse:
                 # (@) - if the word is @ and after there is a word -> union those tokens
                 elif w == '@' and i < (len(text_tokens) - 1):
                     text_tokens[i: (i + 2)] = [''.join(text_tokens[i: (i + 2)])]
+                    # del text_tokens[i]
+                    # continue
                 # (#) - if the word is # and after there is a word -> union those tokens (there are more rules here)
                 elif w == '#' and i < (len(text_tokens) - 1) and (text_tokens[i+1] == ',' or text_tokens[i+1] == '#'):
                     del text_tokens[i]
@@ -189,9 +196,17 @@ class Parse:
                             separate[index: (j + 1)] = [''.join(separate[index: (j + 1)])]
 
                     # Add the separated words from the hashtag to the tokens list
+                    is_covid = False
                     for word in reversed(separate):
                         if len(word) > 0:
-                            text_tokens.insert(i, word.lower())
+                            if word.lower() in self.covid_words:
+                                text_tokens.insert(i, 'covid')
+                                is_covid = True
+                                break
+                    if not is_covid:
+                        for word in reversed(separate):
+                            if len(word) > 0:
+                                text_tokens.insert(i, word.lower())
 
                 # Numbers
                 elif w.isdigit() or w.replace(',', '').isdigit():

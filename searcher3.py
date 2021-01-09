@@ -52,8 +52,9 @@ class Searcher:
 
 
         relevant_docs = self._relevant_docs_from_posting(query_as_dict)
-        n_relevant = len(relevant_docs)
+
         ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)
+        n_relevant = len(relevant_docs)
         return n_relevant, ranked_doc_ids
 
     # feel free to change the signature and/or implementation of this function 

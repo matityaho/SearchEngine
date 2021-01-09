@@ -2,16 +2,11 @@ import pandas as pd
 from reader import ReadFile
 from configuration import ConfigClass
 from parser_module5 import Parse
-from indexer2 import Indexer
-from searcher2 import Searcher
+from indexer import Indexer
+from searcher5 import Searcher
 import utils
-import gensim
-import numpy as np
 
-
-
-
-# Word2vec
+# wordnet
 
 # DO NOT CHANGE THE CLASS NAME
 class SearchEngine:
@@ -48,8 +43,6 @@ class SearchEngine:
         self._indexer.save_index("inverted_idx")
         print('Finished parsing and indexing.')
 
-
-
     # DO NOT MODIFY THIS SIGNATURE
     # You can change the internal implementation as you see fit.
     def load_index(self, fn):
@@ -65,11 +58,10 @@ class SearchEngine:
     def load_precomputed_model(self, model_dir=None):
         """
         Loads a pre-computed model (or models) so we can answer queries.
-        This is where you would load models like word2vec, LSI, LDA, etc. and
+        This is where you would load models like word2vec, LSI, LDA, etc. and 
         assign to self._model, which is passed on to the searcher at query time.
         """
-        w2c_path = self._config.google_news_vectors_negative300_path
-        self._model = gensim.models.KeyedVectors.load_word2vec_format(w2c_path, binary=True, datatype=np.float16)
+        pass
 
     # DO NOT MODIFY THIS SIGNATURE
     # You can change the internal implementation as you see fit.

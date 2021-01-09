@@ -78,10 +78,11 @@ class Indexer:
 
         del self.entityDict
 
-
+        # sort = SortedDict(self.inverted_idx)
+        # print()
         # print(SortedDict(self.inverted_idx))
         # print(SortedDict(self.postingDict))
-        # print(len(self.inverted_idx.keys()))
+        print(len(self.inverted_idx.keys()))
         # print(len(self.postingDict.keys()))
 
     # DO NOT MODIFY THIS SIGNATURE

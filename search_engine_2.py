@@ -20,7 +20,7 @@ class SearchEngine:
     # You can change the internal implementation, but you must have a parser and an indexer.
     def __init__(self, config=None):
         self._config = config
-        self._parser = Parse()
+        self._parser = Parse(config.toStem)
         self._indexer = Indexer(config)
         self._model = None
 
