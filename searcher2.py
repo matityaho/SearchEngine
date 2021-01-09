@@ -57,8 +57,8 @@ class Searcher:
         #             break
         relevant_docs = self._relevant_docs_from_posting(query_as_list)
 
-        ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs, 2000)
-        n_relevant = len(relevant_docs)
+        ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)
+        n_relevant = len(ranked_doc_ids)
         return n_relevant, ranked_doc_ids
 
     def get_list_words(self, query_as_dict):
