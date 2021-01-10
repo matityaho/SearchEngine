@@ -1,12 +1,17 @@
 import pandas as pd
 from reader import ReadFile
 from configuration import ConfigClass
-from parser_module5 import Parse
-from indexer import Indexer
+from parser_module import Parse
+from indexer2 import Indexer
 from searcher5 import Searcher
-import utils
+# import utils
+# import gensim
+import numpy as np
 
-# wordnet
+
+
+
+# Glove
 
 # DO NOT CHANGE THE CLASS NAME
 class SearchEngine:
@@ -43,6 +48,8 @@ class SearchEngine:
         self._indexer.save_index("inverted_idx")
         print('Finished parsing and indexing.')
 
+
+
     # DO NOT MODIFY THIS SIGNATURE
     # You can change the internal implementation as you see fit.
     def load_index(self, fn):
@@ -58,22 +65,31 @@ class SearchEngine:
     def load_precomputed_model(self, model_dir=None):
         """
         Loads a pre-computed model (or models) so we can answer queries.
-        This is where you would load models like word2vec, LSI, LDA, etc. and 
+        This is where you would load models like word2vec, LSI, LDA, etc. and
         assign to self._model, which is passed on to the searcher at query time.
         """
-        pass
+        glove_path = self._config.glove_twitter_27B_25d_path
+        embeddings_dict = {}
+        with open(glove_path, 'r', encoding="utf8") as f:
+            for line in f:
+                values = line.split()
+                word = values[0]
+                vector = np.asarray(values[1:], "float32")
+                embeddings_dict[word] = vector
+        self._model = embeddings_dict
+        # self._model = gensim.models.KeyedVectors.load_word2vec_format(w2c_path, binary=True, datatype=np.float16)
 
     # DO NOT MODIFY THIS SIGNATURE
     # You can change the internal implementation as you see fit.
     def search(self, query):
-        """ 
-        Executes a query over an existing index and returns the number of 
+        """
+        Executes a query over an existing index and returns the number of
         relevant docs and an ordered list of search results.
         Input:
             query - string.
         Output:
-            A tuple containing the number of relevant search results, and 
-            a list of tweet_ids where the first element is the most relavant 
+            A tuple containing the number of relevant search results, and
+            a list of tweet_ids where the first element is the most relavant
             and the last is the least relevant result.
         """
         self.load_index("inverted_idx")

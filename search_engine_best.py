@@ -1,7 +1,7 @@
 import pandas as pd
 from reader import ReadFile
 from configuration import ConfigClass
-from parser_module5 import Parse
+from parser_module_adv import Parse
 from indexer2 import Indexer
 from searcher2 import Searcher
 import utils
