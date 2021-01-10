@@ -3,7 +3,7 @@ from reader import ReadFile
 from configuration import ConfigClass
 from parser_module_adv import Parse
 from indexer2 import Indexer
-from searcher2 import Searcher
+from searcher_best import Searcher
 import utils
 import gensim
 import numpy as np

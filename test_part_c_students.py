@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
         # test for each search engine module
         # engine_modules = ['search_engine_' + name for name in ['1', '2', '3', '4', '5', 'best']]
-        engine_modules = ['search_engine_' + name for name in ['1', '2', '3', '4', '5', 'best']]
+        engine_modules = ['search_engine_' + name for name in ['1']]
         for engine_module in engine_modules:
             try:
                 # does the module file exist?
@@ -121,6 +121,8 @@ if __name__ == '__main__':
                 if queries is not None:
                     for i, row in queries.iterrows():
                         q_id = row['query_id']
+                        # if q_id != 8:
+                        #     continue
                         q_keywords = row['keywords']
                         # q_keywords = row['information_need']
                         start_time = time.time()

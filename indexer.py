@@ -78,6 +78,11 @@ class Indexer:
 
         del self.entityDict
 
+        print(self.inverted_idx['kills'])
+        print(self.inverted_idx['people'])
+        print(self.postingDict['kills'])
+        print(self.documents['1285913447679635457'])
+
         # sort = SortedDict(self.inverted_idx)
         # print()
         # print(SortedDict(self.inverted_idx))

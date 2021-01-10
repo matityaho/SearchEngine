@@ -23,18 +23,10 @@ class Indexer:
         """
 
         document_dictionary = document.term_doc_dictionary
-        values = document_dictionary.values()
-        if len(values) == 0:
-            max_tf = 0
-            doc_size = 1
-        else:
-            max_tf = max(values)
-            doc_size = sum(values)
 
         terms = document_dictionary.copy().keys()
-        size_terms = len(terms)
-        # Save doc data, format: {tweet id: (words dictionary(word: amount), max_tf, size_terms)
-        self.documents[document.tweet_id] = (self.get_words(document_dictionary), max_tf, size_terms)
+        # Save doc data, format: {tweet id: [words]}
+        self.documents[document.tweet_id] = self.get_words(document_dictionary)
 
         # Go over each term in the doc
         for term in terms:
@@ -47,17 +39,16 @@ class Indexer:
                     self.inverted_idx[term] += 1
 
                 term_repeats_doc = document_dictionary[term]
-                tf = term_repeats_doc / doc_size
-                self.postingDict[term].append((document.tweet_id, term_repeats_doc, tf))
+                self.postingDict[term].append((document.tweet_id, term_repeats_doc))
 
             except:
                 print('problem with the following key {}'.format(term[0]))
         for term in document.entity_list.keys():
             amount = document.entity_list[term]
             if term not in self.entityDict:
-                self.entityDict[term] = [(document.tweet_id, amount, amount/doc_size)]
+                self.entityDict[term] = [(document.tweet_id, amount)]
             else:
-                self.entityDict[term].append((document.tweet_id, amount, amount/doc_size))
+                self.entityDict[term].append((document.tweet_id, amount))
 
     def after_indexing(self):
         # checks the rule for upper/lowercase
@@ -82,7 +73,12 @@ class Indexer:
         # sort = SortedDict(self.inverted_idx)
         # print()
         # print(SortedDict(self.postingDict))
-        # print(len(self.inverted_idx.keys()))
+        print(self.inverted_idx['fauci'])
+        print(self.inverted_idx['flu'])
+        print(self.postingDict['fauci'])
+        print(self.documents['1286426604818833408'])
+
+        print(len(self.inverted_idx.keys()))
         # print(len(self.postingDict.keys()))
 
     # DO NOT MODIFY THIS SIGNATURE
