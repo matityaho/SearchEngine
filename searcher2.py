@@ -39,6 +39,8 @@ class Searcher:
         relevant_docs = self._relevant_docs_from_posting(query_as_list)
 
         ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)
+        # print("SE2 top5:")
+        # print(ranked_doc_ids[:5])
         n_relevant = len(ranked_doc_ids)
         return n_relevant, ranked_doc_ids
 
@@ -73,7 +75,7 @@ class Searcher:
         #         sim = self.cosine_similarity(doc_vector, que_vector)
         #         # if sim > 0.4:
         #         relevant_docs[doc_id] = sim + relevant_docs[doc_id]
-        # #for full queries
+        #for full queries
         docs = self._indexer.documents
         for doc_id, doc_list in docs.items():
             words = doc_list

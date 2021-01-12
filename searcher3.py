@@ -54,6 +54,8 @@ class Searcher:
         relevant_docs = self._relevant_docs_from_posting(query_as_dict)
 
         ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)
+        # print("SE3 top5:")
+        # print(ranked_doc_ids[:5])
         n_relevant = len(ranked_doc_ids)
         return n_relevant, ranked_doc_ids
 

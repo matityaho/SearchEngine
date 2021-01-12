@@ -51,6 +51,8 @@ class Searcher:
 
         ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)
         n_relevant = len(ranked_doc_ids)
+        # print("SE1 top5:")
+        # print(ranked_doc_ids[:5])
         return n_relevant, ranked_doc_ids
 
     # feel free to change the signature and/or implementation of this function 

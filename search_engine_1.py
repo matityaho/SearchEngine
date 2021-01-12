@@ -29,8 +29,8 @@ class SearchEngine:
         Output:
             No output, just modifies the internal _indexer object.
         """
-        df = pd.read_parquet(fn, engine="pyarrow")
-        documents_list = df.values.tolist()
+        reader = ReadFile('')
+        documents_list = reader.read_fn(fn)
         # Iterate over every document in the file
         number_of_documents = 0
         for idx, document in enumerate(documents_list):
@@ -76,6 +76,6 @@ class SearchEngine:
             a list of tweet_ids where the first element is the most relavant 
             and the last is the least relevant result.
         """
-        self.load_index("inverted_idx")
+        self.load_index("inverted_idx.pkl")
         searcher = Searcher(self._parser, self._indexer, model=self._model)
         return searcher.search(query)

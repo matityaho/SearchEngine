@@ -82,8 +82,8 @@ if __name__ == '__main__':
                 logging.error('model.zip file does not exists.')
 
         # test for each search engine module
-        # engine_modules = ['search_engine_' + name for name in ['1', '2', '3', '4', '5', 'best']]
         engine_modules = ['search_engine_' + name for name in ['1', '2', '3', '4', '5', 'best']]
+        # engine_modules = ['search_engine_' + name for name in ['1']]
         for engine_module in engine_modules:
             try:
                 # does the module file exist?
@@ -106,15 +106,15 @@ if __name__ == '__main__':
                 engine.load_precomputed_model(model_dir)
 
                 # test that we can run one query and get results in the format we expect
-                n_res, res = engine.search('bioweapon')
-                if n_res is None or res is None or n_res < 1 or len(res) < 1:
-                    logging.error('basic query for the word bioweapon returned no results')
-                else:
-                    logging.debug(f"{engine_module} successfully returned {n_res} results for the query 'bioweapon'.")
-                    invalid_tweet_ids = [doc_id for doc_id in res if invalid_tweet_id(doc_id)]
-                    if len(invalid_tweet_ids) > 0:
-                        logging.error("the query 'bioweapon' returned results that are not valid tweet ids: " + str(
-                            invalid_tweet_ids[:10]))
+                # n_res, res = engine.search('bioweapon')
+                # if n_res is None or res is None or n_res < 1 or len(res) < 1:
+                #     logging.error('basic query for the word bioweapon returned no results')
+                # else:
+                #     logging.debug(f"{engine_module} successfully returned {n_res} results for the query 'bioweapon'.")
+                #     invalid_tweet_ids = [doc_id for doc_id in res if invalid_tweet_id(doc_id)]
+                #     if len(invalid_tweet_ids) > 0:
+                #         logging.error("the query 'bioweapon' returned results that are not valid tweet ids: " + str(
+                #             invalid_tweet_ids[:10]))
 
                 # run multiple queries and test that no query takes > 10 seconds
                 queries_results = []
@@ -163,7 +163,18 @@ if __name__ == '__main__':
                     if results_map <= 0 or results_map > 1:
                         logging.error(f'{engine_module} results MAP value is out of range (0,1).')
 
-                    # test that the average across queries of precision, 
+                    dict_data = {'query': [], 'precision': [], 'precision@5': [], 'precision@10': [], 'precision@50': [], 'recall': []}
+                    for query_num in range(1, 36):
+                        dict_data['query'].append(query_num)
+                        dict_data['recall'].append(metrics.recall_single(q_results_labeled,  q2n_relevant.get(query_num), query_num))
+                        dict_data['precision'].append(metrics.precision(q_results_labeled, True, query_num))
+                        dict_data['precision@5'].append(metrics.precision_at_n(q_results_labeled, query_num, 5))
+                        dict_data['precision@10'].append(metrics.precision_at_n(q_results_labeled, query_num, 10))
+                        dict_data['precision@50'].append(metrics.precision_at_n(q_results_labeled, query_num, 50))
+                    df_data = pd.DataFrame(dict_data, columns=['query', 'precision', 'precision@5', 'precision@10', 'precision@50', 'recall'])
+                    # print(df_data)
+                    df_data.to_excel(engine_module + "_output.xlsx")
+                    # test that the average across queries of precision,
                     # precision@5, precision@10, precision@50, and recall 
                     # is in [0,1].
                     prec, p5, p10, p50, recall = \

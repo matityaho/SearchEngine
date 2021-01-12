@@ -32,7 +32,7 @@ def load_obj(name):
     :param name: name of the pickle file
     :return: loaded pickle file
     """
-    with open(name + '.pkl', 'rb') as f:
+    with open(name, 'rb') as f:
         return pickle.load(f)
 
 def load_list(name):
@@ -43,7 +43,7 @@ def load_list(name):
     :return: -
     """
     listObj = []
-    with open(name + '.pkl', 'rb') as f:
+    with open(name, 'rb') as f:
         listObj.append(pickle.load(f))
         listObj.append(pickle.load(f))
         listObj.append(pickle.load(f))

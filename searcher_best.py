@@ -36,9 +36,12 @@ class Searcher:
         query_as_dict = self._parser.parse_query(query)
         query_as_list = self.get_list_words(query_as_dict)
         # query_as_list = self._parser.parse_sentence(query)
+
         relevant_docs = self._relevant_docs_from_posting(query_as_list)
 
         ranked_doc_ids = Ranker.rank_relevant_docs(relevant_docs)
+        # print("SE BEST top5:")
+        # print(ranked_doc_ids[:5])
         n_relevant = len(ranked_doc_ids)
         return n_relevant, ranked_doc_ids
 
